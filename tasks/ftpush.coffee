@@ -51,7 +51,9 @@ module.exports = (grunt) ->
     constructor: (@localRoot, @remoteRoot, @memoryPath, @auth, @exclusions, @keep, options) ->
       @localRoot = Path.resolve(@localRoot)
       grunt.log.debug "Local root set to '#{@localRoot}'"
-
+      
+      grunt.file.defaultEncoding = 'utf8';
+      grunt.file.preserveBOM = false;
       @localFiles = @buildTree()
       grunt.log.debug "#{Object.keys(@localFiles).length} paths found"
 
