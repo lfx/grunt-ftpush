@@ -73,8 +73,9 @@ module.exports = (grunt) ->
       path.split(Path.sep).join('/')
 
     hash: (path) ->
+      options = {encoding: 'utf8', preserveBOM: false}
       hash = crypto.createHash 'md5'
-      hash.update grunt.file.read(path)
+      hash.update grunt.file.read(path, options)
       hash.digest 'hex'
 
     remember: (path, file, hash) ->
