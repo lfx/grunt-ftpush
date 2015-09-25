@@ -1,5 +1,7 @@
 # grunt-ftpush
 
+# NOT TESTED
+
 [![NPM version](https://badge.fury.io/js/grunt-ftpush.png)](http://badge.fury.io/js/grunt-ftpush)
 
 > Incrementally deploy data over the FTP protocol.
