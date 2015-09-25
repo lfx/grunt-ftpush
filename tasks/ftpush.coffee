@@ -30,6 +30,20 @@ module.exports = (grunt) ->
 
     grunt.log.debug "Initializing synchronizer..."
 
+    memPath = Path.join(".grunt", "ftpush", "#{@target}.json")
+    memory = grunt.file.read memPath
+
+    if os.type().toLowerCase().indexOf('win') == 0
+      if memory.indexOf('/') > -1
+        grunt.log.debug "Fixing nix to win"
+        memory = memory.split('/').join('\\\\')
+    else
+      if memory.indexOf('\\\\') > -1
+        grunt.log.debug "Fixing win to nix"
+        memory = memory.split('\\\\').join('/')
+
+    grunt.file.write memPath memory
+
     sync = new Synchronizer(
       localRoot,
       remoteRoot,
